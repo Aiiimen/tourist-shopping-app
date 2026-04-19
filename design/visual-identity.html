@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visual Identity — Tourist Shopping List App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Primary: Tokyoite Blue */
+      --blue-50:  #EBF1FF;
+      --blue-100: #D6E4FF;
+      --blue-200: #ACC9FF;
+      --blue-300: #74A7FF;
+      --blue-400: #3D81FF;
+      --blue-500: #1B5FE8;
+      --blue-600: #1249C7;
+      --blue-700: #0C35A0;
+      --blue-800: #082480;
+      --blue-900: #041561;
+
+      /* Accent: Neon Tangerine */
+      --tan-300: #FFB08A;
+      --tan-400: #FF894A;
+      --tan-500: #FF6B2B;
+      --tan-600: #E04E12;
+
+      /* Success: Jade */
+      --jade-300: #4DDFC9;
+      --jade-400: #00C8A8;
+      --jade-500: #00B896;
+      --jade-600: #008D73;
+
+      /* Semantic */
+      --error:   #E8394D;
+      --warning: #F5A623;
+      --success: #00B896;
+      --info:    #1B5FE8;
+
+      /* Neutral: Cool Gray */
+      --gray-50:  #F8F9FC;
+      --gray-100: #F0F2F8;
+      --gray-200: #E1E4EF;
+      --gray-300: #C8CCE0;
+      --gray-400: #9EA4C1;
+      --gray-500: #7178A0;
+      --gray-600: #545B85;
+      --gray-700: #3B4168;
+      --gray-800: #27304E;
+      --gray-900: #161C34;
+
+      /* Map pin colours */
+      --pin-electronics: #1B5FE8;
+      --pin-food:        #FF6B2B;
+      --pin-clothing:    #A855F7;
+      --pin-souvenirs:   #EAB308;
+      --pin-beauty:      #EC4899;
+      --pin-books:       #22C55E;
+      --pin-multi:       #161C34;
+
+      --font-display: 'Plus Jakarta Sans', sans-serif;
+      --font-ui:      'Inter', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-ui);
+      background: var(--gray-50);
+      color: var(--gray-900);
+      line-height: 1.5;
+    }
+
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    /* ── Header ───────────────────────────────────────────── */
+    .header {
+      background: linear-gradient(135deg, var(--blue-900) 0%, var(--blue-700) 55%, var(--blue-500) 100%);
+      color: white;
+      padding: 48px 40px;
+      border-radius: 20px;
+      margin-bottom: 56px;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: 80px;
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+    }
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: -50px; right: -40px;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+    .header-eyebrow {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      opacity: 0.55; margin-bottom: 8px;
+    }
+    .header-title {
+      font-family: var(--font-display);
+      font-size: 38px; font-weight: 800;
+      margin-bottom: 8px; position: relative; z-index: 1;
+    }
+    .header-sub {
+      font-size: 16px; opacity: 0.65; position: relative; z-index: 1;
+    }
+    .header-meta {
+      margin-top: 24px;
+      display: flex; gap: 24px;
+      font-size: 12px; opacity: 0.5;
+    }
+
+    /* ── Section ──────────────────────────────────────────── */
+    .section { margin-bottom: 72px; }
+
+    .section-eyebrow {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--gray-400); margin-bottom: 6px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 26px; font-weight: 700;
+      color: var(--gray-900); margin-bottom: 28px;
+    }
+    .subsection { margin-bottom: 36px; }
+    .subsection-label {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      color: var(--gray-500); margin-bottom: 14px;
+    }
+
+    /* ── Colour swatches ──────────────────────────────────── */
+    .swatch-row {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    @media (max-width: 700px) {
+      .swatch-row { grid-template-columns: repeat(5, 1fr); }
+    }
+    .swatch {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+    .swatch-block { height: 52px; width: 100%; }
+    .swatch-info {
+      padding: 6px 8px;
+      background: white;
+    }
+    .swatch-step {
+      font-size: 10px; font-weight: 700;
+      color: var(--gray-500); display: block; line-height: 1.2;
+    }
+    .swatch-hex {
+      font-size: 9px; font-family: 'Courier New', monospace;
+      color: var(--gray-400); display: block;
+    }
+
+    /* chip (for accent/semantic/pins) */
+    .chip-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
+    .chip {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 14px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    }
+    .chip-dot {
+      width: 34px; height: 34px;
+      border-radius: 8px; flex-shrink: 0;
+    }
+    .chip-name {
+      font-size: 13px; font-weight: 600;
+      color: var(--gray-800); display: block;
+    }
+    .chip-hex {
+      font-size: 11px; font-family: 'Courier New', monospace;
+      color: var(--gray-400);
+    }
+
+    /* highlight note */
+    .note {
+      background: var(--blue-50);
+      border-left: 3px solid var(--blue-400);
+      padding: 11px 16px;
+      border-radius: 0 8px 8px 0;
+      font-size: 13px; color: var(--gray-700);
+      margin-top: 12px; line-height: 1.6;
+    }
+
+    /* ── Typography ───────────────────────────────────────── */
+    .type-scale {
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+      overflow: hidden;
+    }
+    .type-row {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 20px;
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--gray-100);
+      align-items: baseline;
+    }
+    .type-row:last-child { border-bottom: none; }
+    .type-meta {
+      font-size: 11px; font-weight: 500;
+      color: var(--gray-500); line-height: 1.5;
+    }
+    .type-meta strong {
+      font-size: 12px; font-weight: 700;
+      color: var(--gray-700); display: block; margin-bottom: 2px;
+    }
+    .font-family-row {
+      display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px;
+    }
+    .font-card {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 18px;
+      background: white; border-radius: 12px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+      min-width: 240px;
+    }
+    .font-sample-box {
+      width: 48px; height: 48px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .font-card-info .fname { font-size: 14px; font-weight: 600; color: var(--gray-900); display: block; }
+    .font-card-info .fmeta { font-size: 12px; color: var(--gray-500); }
+
+    /* ── Icons ────────────────────────────────────────────── */
+    .icon-grid {
+      display: flex; flex-wrap: wrap; gap: 10px;
+    }
+    .icon-item {
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      padding: 16px 12px;
+      background: white; border-radius: 12px;
+      min-width: 72px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    }
+    .icon-label {
+      font-size: 10px; font-weight: 500;
+      color: var(--gray-500); text-align: center; line-height: 1.3;
+    }
+
+    /* ── Map pins ─────────────────────────────────────────── */
+    .pin-row {
+      display: flex; flex-wrap: wrap; gap: 24px;
+      align-items: flex-end;
+    }
+    .pin-item {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+    }
+    .pin-item svg { filter: drop-shadow(0 4px 10px rgba(0,0,0,0.22)); }
+    .pin-label {
+      font-size: 11px; font-weight: 500;
+      color: var(--gray-600); text-align: center; max-width: 72px;
+    }
+
+    /* ── Spacing ──────────────────────────────────────────── */
+    .spacing-row {
+      display: flex; flex-wrap: wrap; gap: 16px;
+      align-items: flex-end;
+    }
+    .spacing-item {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+    }
+    .spacing-bar {
+      background: var(--blue-500);
+      border-radius: 4px;
+      width: 10px;
+    }
+    .spacing-label {
+      font-size: 10px; font-weight: 500;
+      color: var(--gray-500); text-align: center;
+    }
+
+    /* ── Buttons ──────────────────────────────────────────── */
+    .btn-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 20px; border-radius: 12px;
+      font-family: var(--font-ui); font-size: 15px; font-weight: 600;
+      border: none; cursor: pointer;
+    }
+    .btn-primary  { background: var(--blue-500); color: white; }
+    .btn-accent   { background: var(--tan-500);  color: white; }
+    .btn-outline  { background: transparent; color: var(--blue-600); border: 2px solid var(--blue-500); }
+    .btn-ghost    { background: var(--blue-50);  color: var(--blue-700); }
+    .btn-success  { background: var(--jade-500); color: white; }
+    .btn-danger   { background: var(--error);    color: white; }
+    .btn-disabled { background: var(--gray-200); color: var(--gray-400); cursor: not-allowed; }
+
+    /* ── Principle cards ──────────────────────────────────── */
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 12px;
+    }
+    .principle-card {
+      background: white; border-radius: 14px;
+      padding: 22px 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    }
+    .p-icon { font-size: 26px; margin-bottom: 10px; }
+    .p-title {
+      font-family: var(--font-display); font-size: 15px; font-weight: 700;
+      color: var(--gray-900); margin-bottom: 6px;
+    }
+    .p-desc { font-size: 13px; color: var(--gray-500); line-height: 1.55; }
+
+    /* ── Usage card ───────────────────────────────────────── */
+    .usage-card {
+      background: white; border-radius: 12px;
+      padding: 16px 20px; margin-bottom: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .usage-card h4 { font-size: 14px; font-weight: 600; color: var(--gray-800); margin-bottom: 6px; }
+    .usage-card p  { font-size: 13px; color: var(--gray-600); line-height: 1.6; }
+
+    /* ── Footer ───────────────────────────────────────────── */
+    .footer {
+      text-align: center; padding: 16px 0;
+      font-size: 12px; color: var(--gray-400);
+      border-top: 1px solid var(--gray-200); margin-top: 40px;
+    }
+
+    /* star badge */
+    .star-badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      background: var(--blue-500); color: white;
+      font-size: 10px; font-weight: 700;
+      padding: 2px 7px; border-radius: 20px;
+      margin-left: 6px; vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- HEADER                                                 -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="header">
+    <div class="header-eyebrow">Tourist Shopping List App</div>
+    <div class="header-title">Visual Identity</div>
+    <div class="header-sub">Colour palette · Typography · Iconography — MVP</div>
+    <div class="header-meta">
+      <span>v1.0</span>
+      <span>March 2026</span>
+      <span>Mobile-first · 375px baseline · Tokyo MVP</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- 01 — COLOUR SYSTEM                                     -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-eyebrow">01 — Colour System</div>
+    <div class="section-title">Colour Palette</div>
+
+    <!-- Primary -->
+    <div class="subsection">
+      <div class="subsection-label">Primary — Tokyoite Blue <span class="star-badge">★ brand</span></div>
+      <div class="swatch-row">
+        <div class="swatch">
+          <div class="swatch-block" style="background:#EBF1FF;border:1px solid #D6E4FF"></div>
+          <div class="swatch-info"><span class="swatch-step">50</span><span class="swatch-hex">#EBF1FF</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#D6E4FF"></div>
+          <div class="swatch-info"><span class="swatch-step">100</span><span class="swatch-hex">#D6E4FF</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#ACC9FF"></div>
+          <div class="swatch-info"><span class="swatch-step">200</span><span class="swatch-hex">#ACC9FF</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#74A7FF"></div>
+          <div class="swatch-info"><span class="swatch-step">300</span><span class="swatch-hex">#74A7FF</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#3D81FF"></div>
+          <div class="swatch-info"><span class="swatch-step">400</span><span class="swatch-hex">#3D81FF</span></div>
+        </div>
+        <div class="swatch" style="outline:2px solid #1B5FE8;outline-offset:2px;border-radius:10px">
+          <div class="swatch-block" style="background:#1B5FE8"></div>
+          <div class="swatch-info"><span class="swatch-step" style="color:#1B5FE8">500 ★</span><span class="swatch-hex">#1B5FE8</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#1249C7"></div>
+          <div class="swatch-info"><span class="swatch-step">600</span><span class="swatch-hex">#1249C7</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#0C35A0"></div>
+          <div class="swatch-info"><span class="swatch-step">700</span><span class="swatch-hex">#0C35A0</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#082480"></div>
+          <div class="swatch-info"><span class="swatch-step">800</span><span class="swatch-hex">#082480</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#041561"></div>
+          <div class="swatch-info"><span class="swatch-step">900</span><span class="swatch-hex">#041561</span></div>
+        </div>
+      </div>
+      <div class="note">
+        <strong>Blue-500 (#1B5FE8)</strong> is the primary brand colour — use for interactive elements, primary buttons, and links. Blue-700/800 for body text on light backgrounds (meets WCAG AAA 7:1). Blue-100 for tinted/selected backgrounds.
+      </div>
+    </div>
+
+    <!-- Accent -->
+    <div class="subsection">
+      <div class="subsection-label">Accent — Neon Tangerine</div>
+      <div class="chip-row">
+        <div class="chip">
+          <div class="chip-dot" style="background:#FFB08A"></div>
+          <div><span class="chip-name">Tangerine 300</span><span class="chip-hex">#FFB08A</span></div>
+        </div>
+        <div class="chip">
+          <div class="chip-dot" style="background:#FF894A"></div>
+          <div><span class="chip-name">Tangerine 400</span><span class="chip-hex">#FF894A</span></div>
+        </div>
+        <div class="chip" style="outline:2px solid #FF6B2B;outline-offset:2px;border-radius:12px">
+          <div class="chip-dot" style="background:#FF6B2B"></div>
+          <div><span class="chip-name" style="color:#E04E12">Tangerine 500 ★</span><span class="chip-hex">#FF6B2B</span></div>
+        </div>
+        <div class="chip">
+          <div class="chip-dot" style="background:#E04E12"></div>
+          <div><span class="chip-name">Tangerine 600</span><span class="chip-hex">#E04E12</span></div>
+        </div>
+      </div>
+      <div class="note">
+        Tangerine-500 is the CTA and highlight colour. Use for floating action buttons (Add Item), map call-to-action chips, and moments that need urgency. Use sparingly — this is a visual exclamation mark.
+      </div>
+    </div>
+
+    <!-- Success -->
+    <div class="subsection">
+      <div class="subsection-label">Success — Jade</div>
+      <div class="chip-row">
+        <div class="chip">
+          <div class="chip-dot" style="background:#4DDFC9"></div>
+          <div><span class="chip-name">Jade 300</span><span class="chip-hex">#4DDFC9</span></div>
+        </div>
+        <div class="chip">
+          <div class="chip-dot" style="background:#00C8A8"></div>
+          <div><span class="chip-name">Jade 400</span><span class="chip-hex">#00C8A8</span></div>
+        </div>
+        <div class="chip" style="outline:2px solid #00B896;outline-offset:2px;border-radius:12px">
+          <div class="chip-dot" style="background:#00B896"></div>
+          <div><span class="chip-name" style="color:#008D73">Jade 500 ★</span><span class="chip-hex">#00B896</span></div>
+        </div>
+        <div class="chip">
+          <div class="chip-dot" style="background:#008D73"></div>
+          <div><span class="chip-name">Jade 600</span><span class="chip-hex">#008D73</span></div>
+        </div>
+      </div>
+      <div class="note">
+        Jade-500 signals purchased / completed. Used for "Mark as bought" button, strikethrough on completed list items, and success toasts. Satisfying and distinct from blue.
+      </div>
+    </div>
+
+    <!-- Semantic -->
+    <div class="subsection">
+      <div class="subsection-label">Semantic Colours</div>
+      <div class="chip-row">
+        <div class="chip">
+          <div class="chip-dot" style="background:#E8394D"></div>
+          <div><span class="chip-name">Error</span><span class="chip-hex">#E8394D</span></div>
+        </div>
+        <div class="chip">
+          <div class="chip-dot" style="background:#F5A623"></div>
+          <div><span class="chip-name">Warning</span><span class="chip-hex">#F5A623</span></div>
+        </div>
+        <div class="chip">
+          <div class="chip-dot" style="background:#00B896"></div>
+          <div><span class="chip-name">Success</span><span class="chip-hex">#00B896</span></div>
+        </div>
+        <div class="chip">
+          <div class="chip-dot" style="background:#1B5FE8"></div>
+          <div><span class="chip-name">Info</span><span class="chip-hex">#1B5FE8</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Neutral -->
+    <div class="subsection">
+      <div class="subsection-label">Neutral — Cool Gray</div>
+      <div class="swatch-row">
+        <div class="swatch">
+          <div class="swatch-block" style="background:#F8F9FC;border:1px solid #E1E4EF"></div>
+          <div class="swatch-info"><span class="swatch-step">50</span><span class="swatch-hex">#F8F9FC</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#F0F2F8"></div>
+          <div class="swatch-info"><span class="swatch-step">100</span><span class="swatch-hex">#F0F2F8</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#E1E4EF"></div>
+          <div class="swatch-info"><span class="swatch-step">200</span><span class="swatch-hex">#E1E4EF</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#C8CCE0"></div>
+          <div class="swatch-info"><span class="swatch-step">300</span><span class="swatch-hex">#C8CCE0</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#9EA4C1"></div>
+          <div class="swatch-info"><span class="swatch-step">400</span><span class="swatch-hex">#9EA4C1</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#7178A0"></div>
+          <div class="swatch-info"><span class="swatch-step">500</span><span class="swatch-hex">#7178A0</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#545B85"></div>
+          <div class="swatch-info"><span class="swatch-step">600</span><span class="swatch-hex">#545B85</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#3B4168"></div>
+          <div class="swatch-info"><span class="swatch-step">700</span><span class="swatch-hex">#3B4168</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#27304E"></div>
+          <div class="swatch-info"><span class="swatch-step">800</span><span class="swatch-hex">#27304E</span></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-block" style="background:#161C34"></div>
+          <div class="swatch-info"><span class="swatch-step">900</span><span class="swatch-hex">#161C34</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Map pin colours -->
+    <div class="subsection">
+      <div class="subsection-label">Map Pin Colour Coding — one colour per item category</div>
+      <div class="chip-row">
+        <div class="chip">
+          <div class="chip-dot" style="background:#1B5FE8"></div>
+          <div><span class="chip-name">Electronics</span><span class="chip-hex">#1B5FE8</span></div>
+        </div>
+        <div class="chip">
+          <div class="chip-dot" style="background:#FF6B2B"></div>
+          <div><span class="chip-name">Food &amp; Snacks</span><span class="chip-hex">#FF6B2B</span></div>
+        </div>
+        <div class="chip">
+          <div class="chip-dot" style="background:#A855F7"></div>
+          <div><span class="chip-name">Clothing</span><span class="chip-hex">#A855F7</span></div>
+        </div>
+        <div class="chip">
+          <div class="chip-dot" style="background:#EAB308"></div>
+          <div><span class="chip-name">Souvenirs</span><span class="chip-hex">#EAB308</span></div>
+        </div>
+        <div class="chip">
+          <div class="chip-dot" style="background:#EC4899"></div>
+          <div><span class="chip-name">Beauty &amp; Health</span><span class="chip-hex">#EC4899</span></div>
+        </div>
+        <div class="chip">
+          <div class="chip-dot" style="background:#22C55E"></div>
+          <div><span class="chip-name">Books &amp; Stationery</span><span class="chip-hex">#22C55E</span></div>
+        </div>
+        <div class="chip" style="outline:2px solid #161C34;outline-offset:2px;border-radius:12px">
+          <div class="chip-dot" style="background:#161C34"></div>
+          <div><span class="chip-name">Multi-item Store</span><span class="chip-hex">#161C34</span></div>
+        </div>
+      </div>
+      <div class="note">
+        Each item is automatically assigned one of these six category colours. Multi-item stores — those carrying 2+ list items — use a bold dark navy pin with a numeric badge. This is the highest-value signal in the UI and must be visually dominant on the map.
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- 02 — TYPOGRAPHY                                        -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-eyebrow">02 — Typography</div>
+    <div class="section-title">Type System</div>
+
+    <div class="subsection">
+      <div class="subsection-label">Font Families — max 2</div>
+      <div class="font-family-row">
+        <div class="font-card">
+          <div class="font-sample-box" style="background:#161C34">
+            <span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;color:white">Aa</span>
+          </div>
+          <div class="font-card-info">
+            <span class="fname">Plus Jakarta Sans</span>
+            <span class="fmeta">Display · H1 · H2 — weights 700, 800<br>Role: personality &amp; hierarchy</span>
+          </div>
+        </div>
+        <div class="font-card">
+          <div class="font-sample-box" style="background:#F0F2F8">
+            <span style="font-family:'Inter',sans-serif;font-size:22px;font-weight:500;color:#161C34">Aa</span>
+          </div>
+          <div class="font-card-info">
+            <span class="fname">Inter</span>
+            <span class="fmeta">H3 · Body · Labels · UI — weights 400, 500, 600<br>Role: legibility at every size</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-label">Type Scale — Mobile (375px base)</div>
+      <div class="type-scale">
+        <div class="type-row">
+          <div class="type-meta">
+            <strong>Display</strong>
+            28 / 36 · PJS 800
+          </div>
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:28px;font-weight:800;line-height:36px;color:#161C34">
+            Find stores in Tokyo
+          </div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">
+            <strong>Heading 1</strong>
+            24 / 32 · PJS 700
+          </div>
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:24px;font-weight:700;line-height:32px;color:#161C34">
+            Your Shopping List
+          </div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">
+            <strong>Heading 2</strong>
+            20 / 28 · PJS 700
+          </div>
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:700;line-height:28px;color:#161C34">
+            5 stores near you
+          </div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">
+            <strong>Heading 3</strong>
+            17 / 24 · Inter 600
+          </div>
+          <div style="font-family:'Inter',sans-serif;font-size:17px;font-weight:600;line-height:24px;color:#161C34">
+            Yodobashi Akihabara
+          </div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">
+            <strong>Body Large</strong>
+            16 / 24 · Inter 400
+          </div>
+          <div style="font-family:'Inter',sans-serif;font-size:16px;font-weight:400;line-height:24px;color:#27304E">
+            Mechanical keyboard — For me · Budget ¥50,000
+          </div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">
+            <strong>Body</strong>
+            15 / 22 · Inter 400
+          </div>
+          <div style="font-family:'Inter',sans-serif;font-size:15px;font-weight:400;line-height:22px;color:#3B4168">
+            Carries mid-range electronics and accessories. Open until 22:00.
+          </div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">
+            <strong>Small</strong>
+            13 / 20 · Inter 400
+          </div>
+          <div style="font-family:'Inter',sans-serif;font-size:13px;font-weight:400;line-height:20px;color:#545B85">
+            1-1-1 Soto-Kanda, Chiyoda · 0.4 km away
+          </div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">
+            <strong>Caption</strong>
+            12 / 18 · Inter 400
+          </div>
+          <div style="font-family:'Inter',sans-serif;font-size:12px;font-weight:400;line-height:18px;color:#7178A0">
+            Last updated 2 hours ago
+          </div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">
+            <strong>Label / Allcaps</strong>
+            11 / 16 · Inter 600
+          </div>
+          <div style="font-family:'Inter',sans-serif;font-size:11px;font-weight:600;line-height:16px;color:#7178A0;letter-spacing:0.08em;text-transform:uppercase">
+            Electronics · 3 stores
+          </div>
+        </div>
+      </div>
+      <div class="note" style="margin-top:14px">
+        All sizes in px. Scale is locked for 375px. On tablets (768px+) the Display size scales to 36px and H1 to 28px. Never go below 12px for any visible text — tourists in glare conditions need legible text.
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- 03 — ICONOGRAPHY                                       -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-eyebrow">03 — Iconography</div>
+    <div class="section-title">Icon System</div>
+
+    <!-- Map pins -->
+    <div class="subsection">
+      <div class="subsection-label">Map Pins — teardrop shape, colour-coded</div>
+      <div class="pin-row">
+
+        <!-- Electronics -->
+        <div class="pin-item">
+          <svg width="36" height="48" viewBox="0 0 36 48">
+            <path d="M18 0C8.059 0 0 8.059 0 18c0 12.5 18 30 18 30S36 30.5 36 18C36 8.059 27.941 0 18 0z" fill="#1B5FE8"/>
+            <circle cx="18" cy="18" r="11" fill="rgba(255,255,255,0.18)"/>
+            <!-- lightning bolt = electronics -->
+            <path d="M21 9l-6 10h5l-4 10 10-13h-6z" fill="white"/>
+          </svg>
+          <span class="pin-label">Electronics</span>
+        </div>
+
+        <!-- Food -->
+        <div class="pin-item">
+          <svg width="36" height="48" viewBox="0 0 36 48">
+            <path d="M18 0C8.059 0 0 8.059 0 18c0 12.5 18 30 18 30S36 30.5 36 18C36 8.059 27.941 0 18 0z" fill="#FF6B2B"/>
+            <circle cx="18" cy="18" r="11" fill="rgba(255,255,255,0.18)"/>
+            <!-- bowl/fork = food -->
+            <path d="M13 11v5c0 1.7 1.3 3 3 3v7h2v-7c1.7 0 3-1.3 3-3v-5h-1.5v4h-1V11h-1.5v4h-1V11H13z" fill="white"/>
+          </svg>
+          <span class="pin-label">Food &amp; Snacks</span>
+        </div>
+
+        <!-- Clothing -->
+        <div class="pin-item">
+          <svg width="36" height="48" viewBox="0 0 36 48">
+            <path d="M18 0C8.059 0 0 8.059 0 18c0 12.5 18 30 18 30S36 30.5 36 18C36 8.059 27.941 0 18 0z" fill="#A855F7"/>
+            <circle cx="18" cy="18" r="11" fill="rgba(255,255,255,0.18)"/>
+            <!-- hanger = clothing -->
+            <path d="M18 10a2.5 2.5 0 012.5 2.5v.5l5 4H10.5l5-4v-.5A2.5 2.5 0 0118 10z" fill="white"/>
+            <rect x="11" y="17" width="14" height="7" rx="1.5" fill="white"/>
+          </svg>
+          <span class="pin-label">Clothing</span>
+        </div>
+
+        <!-- Souvenirs -->
+        <div class="pin-item">
+          <svg width="36" height="48" viewBox="0 0 36 48">
+            <path d="M18 0C8.059 0 0 8.059 0 18c0 12.5 18 30 18 30S36 30.5 36 18C36 8.059 27.941 0 18 0z" fill="#EAB308"/>
+            <circle cx="18" cy="18" r="11" fill="rgba(255,255,255,0.18)"/>
+            <!-- star = souvenirs -->
+            <path d="M18 10l2.2 4.9 5.3.4-4 3.6 1.3 5.1L18 21.4l-4.8 2.6 1.3-5.1-4-3.6 5.3-.4z" fill="white"/>
+          </svg>
+          <span class="pin-label">Souvenirs</span>
+        </div>
+
+        <!-- Beauty -->
+        <div class="pin-item">
+          <svg width="36" height="48" viewBox="0 0 36 48">
+            <path d="M18 0C8.059 0 0 8.059 0 18c0 12.5 18 30 18 30S36 30.5 36 18C36 8.059 27.941 0 18 0z" fill="#EC4899"/>
+            <circle cx="18" cy="18" r="11" fill="rgba(255,255,255,0.18)"/>
+            <!-- flower = beauty -->
+            <circle cx="18" cy="18" r="3.5" fill="white"/>
+            <ellipse cx="18" cy="11.5" rx="2" ry="3" fill="white" opacity="0.9"/>
+            <ellipse cx="18" cy="24.5" rx="2" ry="3" fill="white" opacity="0.9"/>
+            <ellipse cx="11.5" cy="18" rx="3" ry="2" fill="white" opacity="0.9"/>
+            <ellipse cx="24.5" cy="18" rx="3" ry="2" fill="white" opacity="0.9"/>
+          </svg>
+          <span class="pin-label">Beauty &amp; Health</span>
+        </div>
+
+        <!-- Books -->
+        <div class="pin-item">
+          <svg width="36" height="48" viewBox="0 0 36 48">
+            <path d="M18 0C8.059 0 0 8.059 0 18c0 12.5 18 30 18 30S36 30.5 36 18C36 8.059 27.941 0 18 0z" fill="#22C55E"/>
+            <circle cx="18" cy="18" r="11" fill="rgba(255,255,255,0.18)"/>
+            <!-- stacked books -->
+            <rect x="11" y="11" width="14" height="3.5" rx="1.5" fill="white"/>
+            <rect x="12" y="15.5" width="12" height="3.5" rx="1.5" fill="white"/>
+            <rect x="11" y="20" width="14" height="3.5" rx="1.5" fill="white"/>
+          </svg>
+          <span class="pin-label">Books &amp; Stationery</span>
+        </div>
+
+        <!-- Multi-item (larger, bolder) -->
+        <div class="pin-item">
+          <svg width="44" height="56" viewBox="0 0 44 56">
+            <path d="M22 0C9.85 0 0 9.85 0 22c0 14.5 22 34 22 34s22-19.5 22-34C44 9.85 34.15 0 22 0z" fill="#161C34"/>
+            <circle cx="22" cy="22" r="14" fill="rgba(255,255,255,0.06)"/>
+            <circle cx="22" cy="22" r="11" fill="rgba(255,255,255,0.12)"/>
+            <text x="22" y="27" text-anchor="middle"
+              font-family="Inter,sans-serif" font-weight="800" font-size="15" fill="white">3</text>
+          </svg>
+          <span class="pin-label">Multi-item Store</span>
+        </div>
+
+        <!-- Purchased state -->
+        <div class="pin-item">
+          <svg width="36" height="48" viewBox="0 0 36 48">
+            <path d="M18 0C8.059 0 0 8.059 0 18c0 12.5 18 30 18 30S36 30.5 36 18C36 8.059 27.941 0 18 0z" fill="#00B896"/>
+            <circle cx="18" cy="18" r="11" fill="rgba(255,255,255,0.18)"/>
+            <!-- checkmark = purchased -->
+            <path d="M11 18l5 5 9-10" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="pin-label">Purchased</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Action icons -->
+    <div class="subsection">
+      <div class="subsection-label">Action Icons — 24px, 2px stroke, outline style</div>
+      <div class="icon-grid">
+
+        <div class="icon-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#161C34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+          <span class="icon-label">Add Item</span>
+        </div>
+
+        <div class="icon-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#161C34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <span class="icon-label">Purchased</span>
+        </div>
+
+        <div class="icon-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#161C34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <span class="icon-label">Search</span>
+        </div>
+
+        <div class="icon-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#161C34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+          <span class="icon-label">Map View</span>
+        </div>
+
+        <div class="icon-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#161C34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/>
+            <line x1="8" y1="18" x2="21" y2="18"/>
+            <line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
+          </svg>
+          <span class="icon-label">List View</span>
+        </div>
+
+        <div class="icon-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#161C34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="3 6 5 6 21 6"/>
+            <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/>
+            <path d="M10 11v6M14 11v6"/>
+            <path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/>
+          </svg>
+          <span class="icon-label">Remove</span>
+        </div>
+
+        <div class="icon-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#161C34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" y1="6" x2="20" y2="6"/>
+            <line x1="8" y1="12" x2="20" y2="12"/>
+            <line x1="12" y1="18" x2="20" y2="18"/>
+          </svg>
+          <span class="icon-label">Filter</span>
+        </div>
+
+        <div class="icon-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#161C34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+          <span class="icon-label">Store Hours</span>
+        </div>
+
+        <div class="icon-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#161C34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="7" width="20" height="14" rx="2"/>
+            <path d="M16 7V5a2 2 0 00-4 0v2M8 7V5a2 2 0 00-4 0v2"/>
+            <line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/>
+          </svg>
+          <span class="icon-label">Find Stores</span>
+        </div>
+
+        <div class="icon-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#161C34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="4"/>
+            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+          </svg>
+          <span class="icon-label">For (person)</span>
+        </div>
+
+        <div class="icon-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#161C34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 1v22M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/>
+          </svg>
+          <span class="icon-label">Budget</span>
+        </div>
+
+        <div class="icon-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#161C34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/>
+          </svg>
+          <span class="icon-label">Discover / AI</span>
+        </div>
+
+        <div class="icon-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#161C34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="3 11 22 2 13 21 11 13 3 11"/>
+          </svg>
+          <span class="icon-label">Navigate</span>
+        </div>
+
+        <div class="icon-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#161C34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
+            <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
+          </svg>
+          <span class="icon-label">Edit Item</span>
+        </div>
+
+        <div class="icon-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#161C34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/>
+            <line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
+          </svg>
+          <span class="icon-label">Category</span>
+        </div>
+
+      </div>
+
+      <div class="note" style="margin-top:14px">
+        <strong>Style:</strong> Outline (2px stroke) for inactive states. Filled for active/selected states.<br>
+        <strong>Sizes:</strong> 20px inline with text, 24px standard UI, 32px feature/hero.<br>
+        <strong>Touch targets:</strong> Always 44×44px minimum — pad with invisible area if icon is smaller.<br>
+        <strong>Never icon-only</strong> for primary actions — always pair with a text label.
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- 04 — SPACING                                           -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-eyebrow">04 — Spacing</div>
+    <div class="section-title">Spacing Scale — base-4 system</div>
+
+    <div class="spacing-row">
+      <div class="spacing-item">
+        <div class="spacing-bar" style="height:4px;width:36px;border-radius:2px;background:var(--blue-500)"></div>
+        <div class="spacing-label">4px<br>xs</div>
+      </div>
+      <div class="spacing-item">
+        <div class="spacing-bar" style="height:8px;width:36px;border-radius:2px;background:var(--blue-500)"></div>
+        <div class="spacing-label">8px<br>sm</div>
+      </div>
+      <div class="spacing-item">
+        <div class="spacing-bar" style="height:12px;width:36px;border-radius:2px;background:var(--blue-500)"></div>
+        <div class="spacing-label">12px</div>
+      </div>
+      <div class="spacing-item">
+        <div class="spacing-bar" style="height:16px;width:36px;border-radius:2px;background:var(--blue-500)"></div>
+        <div class="spacing-label">16px<br>base</div>
+      </div>
+      <div class="spacing-item">
+        <div class="spacing-bar" style="height:20px;width:36px;border-radius:2px;background:var(--blue-500)"></div>
+        <div class="spacing-label">20px</div>
+      </div>
+      <div class="spacing-item">
+        <div class="spacing-bar" style="height:24px;width:36px;border-radius:2px;background:var(--blue-500)"></div>
+        <div class="spacing-label">24px<br>lg</div>
+      </div>
+      <div class="spacing-item">
+        <div class="spacing-bar" style="height:32px;width:36px;border-radius:2px;background:var(--blue-500)"></div>
+        <div class="spacing-label">32px<br>xl</div>
+      </div>
+      <div class="spacing-item">
+        <div class="spacing-bar" style="height:40px;width:36px;border-radius:2px;background:var(--blue-500)"></div>
+        <div class="spacing-label">40px</div>
+      </div>
+      <div class="spacing-item">
+        <div class="spacing-bar" style="height:48px;width:36px;border-radius:2px;background:var(--blue-500)"></div>
+        <div class="spacing-label">48px<br>2xl</div>
+      </div>
+      <div class="spacing-item">
+        <div class="spacing-bar" style="height:64px;width:36px;border-radius:2px;background:var(--blue-500)"></div>
+        <div class="spacing-label">64px<br>3xl</div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px">
+      <div class="usage-card">
+        <h4>Screen padding</h4>
+        <p>16px horizontal padding on 375px screens. Cards: 16px internal padding. Section separators: 24px vertical gap.</p>
+      </div>
+      <div class="usage-card">
+        <h4>Touch targets</h4>
+        <p>44px minimum height for all interactive elements. Primary buttons: 48px tall. Bottom nav icons: 56px touch area. Map pins: 44×44px invisible touch zone centred on the pin.</p>
+      </div>
+      <div class="usage-card">
+        <h4>Bottom sheet</h4>
+        <p>Shopping list slides up as a bottom sheet. Collapsed: 80px peek (shows first 1–2 items). Expanded: 70% screen height. Map always visible behind collapsed sheet.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- 05 — BUTTON STATES                                     -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-eyebrow">05 — Components Preview</div>
+    <div class="section-title">Button States</div>
+
+    <div class="btn-row">
+      <button class="btn btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+        </svg>
+        Find Stores
+      </button>
+      <button class="btn btn-accent">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+        </svg>
+        Add Item
+      </button>
+      <button class="btn btn-success">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        Mark Purchased
+      </button>
+      <button class="btn btn-outline">View on Map</button>
+      <button class="btn btn-ghost">Edit</button>
+      <button class="btn btn-danger">Remove</button>
+      <button class="btn btn-disabled" disabled>Loading…</button>
+    </div>
+
+    <div class="note" style="margin-top:16px">
+      Primary (blue) = main page action. Accent (tangerine) = floating action button / "Add Item" (one per screen). Success (jade) = purchase confirmation. Outline = secondary actions. Ghost = tertiary. Danger = destructive actions (require confirmation).
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- 06 — DESIGN PRINCIPLES                                 -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-eyebrow">06 — Design Principles</div>
+    <div class="section-title">Non-negotiable Constraints</div>
+
+    <div class="principles-grid">
+      <div class="principle-card">
+        <div class="p-icon">&#9728;</div>
+        <div class="p-title">Outdoor First</div>
+        <div class="p-desc">All text colours meet WCAG AA (4.5:1) minimum; body text targets AAA (7:1). Blue-800 on white = 12:1. Tested against simulated glare.</div>
+      </div>
+      <div class="principle-card">
+        <div class="p-icon">&#128241;</div>
+        <div class="p-title">375px Baseline</div>
+        <div class="p-desc">Every spacing, font size, and layout decision starts at 375px. Scale up for larger screens. Design one-handed from the start.</div>
+      </div>
+      <div class="principle-card">
+        <div class="p-icon">&#128506;</div>
+        <div class="p-title">Map is the Hero</div>
+        <div class="p-desc">60–70% of screen space belongs to the map. UI overlays via translucent bottom sheets and floating chips — never competes with the map.</div>
+      </div>
+      <div class="principle-card">
+        <div class="p-icon">&#127758;</div>
+        <div class="p-title">Language-Agnostic</div>
+        <div class="p-desc">Icons take precedence over labels in UI chrome. Category icons are internationally understood. No idioms or locale-specific phrasing in the interface.</div>
+      </div>
+      <div class="principle-card">
+        <div class="p-icon">&#127752;</div>
+        <div class="p-title">Colour Codes Items</div>
+        <div class="p-desc">Each item gets a persistent category colour — same on list, map pins, and store cards. Builds a visual vocabulary the user learns in &lt;30 seconds.</div>
+      </div>
+      <div class="principle-card">
+        <div class="p-icon">&#9989;</div>
+        <div class="p-title">Progress is Satisfying</div>
+        <div class="p-desc">Buying something is the goal. Purchased state = immediate, satisfying visual change: jade tick, strikethrough, pin greyed out. Don't understate success.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    Tourist Shopping List App &nbsp;·&nbsp; Visual Identity v1.0 &nbsp;·&nbsp; March 2026 &nbsp;·&nbsp; Lead Designer
+  </div>
+
+</div>
+</body>
+</html>

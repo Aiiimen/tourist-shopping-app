@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Screen 01 — List Creation · Tourist Shopping App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue-50:  #EBF1FF;
+      --blue-100: #D6E4FF;
+      --blue-200: #ACC9FF;
+      --blue-300: #74A7FF;
+      --blue-400: #3D81FF;
+      --blue-500: #1B5FE8;
+      --blue-600: #1249C7;
+      --blue-700: #0C35A0;
+      --blue-800: #082480;
+      --blue-900: #041561;
+
+      --tan-300: #FFB08A;
+      --tan-400: #FF894A;
+      --tan-500: #FF6B2B;
+      --tan-600: #E04E12;
+
+      --jade-300: #4DDFC9;
+      --jade-400: #00C8A8;
+      --jade-500: #00B896;
+      --jade-600: #008D73;
+
+      --error:   #E8394D;
+      --warning: #F5A623;
+
+      --gray-50:  #F8F9FC;
+      --gray-100: #F0F2F8;
+      --gray-200: #E1E4EF;
+      --gray-300: #C8CCE0;
+      --gray-400: #9EA4C1;
+      --gray-500: #7178A0;
+      --gray-600: #545B85;
+      --gray-700: #3B4168;
+      --gray-800: #27304E;
+      --gray-900: #161C34;
+
+      --pin-electronics: #1B5FE8;
+      --pin-food:        #FF6B2B;
+      --pin-clothing:    #A855F7;
+      --pin-souvenirs:   #EAB308;
+
+      --font-display: 'Plus Jakarta Sans', sans-serif;
+      --font-ui:      'Inter', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-ui);
+      background: #2D2D2D;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 40px 20px;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .mockup-label {
+      color: rgba(255,255,255,0.5);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 12px;
+      font-family: var(--font-ui);
+    }
+
+    /* ── Phone frame ─────────────────────────────────── */
+    .phone {
+      width: 375px;
+      height: 812px;
+      background: var(--gray-50);
+      border-radius: 44px;
+      box-shadow:
+        0 0 0 10px #1a1a1a,
+        0 0 0 12px #333,
+        0 32px 64px rgba(0,0,0,0.6);
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Status bar ──────────────────────────────────── */
+    .status-bar {
+      background: var(--gray-50);
+      padding: 14px 24px 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .status-time {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--gray-900);
+      font-family: var(--font-ui);
+    }
+    .status-icons {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .status-icons svg { color: var(--gray-900); }
+
+    /* ── App header ──────────────────────────────────── */
+    .app-header {
+      background: var(--gray-50);
+      padding: 8px 20px 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .header-back {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      color: var(--blue-500);
+    }
+    .header-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--gray-900);
+      flex: 1;
+    }
+
+    /* ── Progress bar ────────────────────────────────── */
+    .progress-section {
+      background: var(--gray-50);
+      padding: 10px 20px 12px;
+      flex-shrink: 0;
+    }
+    .progress-track {
+      height: 4px;
+      background: var(--gray-200);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 6px;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--blue-500);
+      border-radius: 2px;
+      width: 37.5%; /* 3 of 8 */
+    }
+    .progress-label {
+      font-size: 12px;
+      color: var(--gray-500);
+      font-weight: 500;
+    }
+
+    /* ── Scroll area ─────────────────────────────────── */
+    .scroll-area {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 16px 0;
+      scrollbar-width: none;
+    }
+    .scroll-area::-webkit-scrollbar { display: none; }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      margin-bottom: 10px;
+      padding: 0 4px;
+    }
+
+    /* ── Item card ───────────────────────────────────── */
+    .item-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.04);
+      padding: 14px 16px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .item-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .item-body {
+      flex: 1;
+    }
+    .item-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--gray-900);
+      margin-bottom: 3px;
+    }
+    .item-meta {
+      font-size: 12px;
+      color: var(--gray-500);
+      margin-bottom: 4px;
+    }
+    .item-for {
+      font-size: 12px;
+      color: var(--gray-500);
+    }
+    .item-badge {
+      flex-shrink: 0;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 6px;
+      letter-spacing: 0.02em;
+    }
+    .badge-found {
+      background: var(--jade-500);
+      color: white;
+    }
+    .badge-searching {
+      background: var(--gray-100);
+      color: var(--gray-500);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .badge-searching::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border: 1.5px solid var(--gray-400);
+      border-top-color: var(--blue-500);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      display: inline-block;
+    }
+
+    /* Skeleton shimmer */
+    .skeleton {
+      background: linear-gradient(90deg, var(--gray-100) 25%, var(--gray-200) 50%, var(--gray-100) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s infinite;
+      border-radius: 4px;
+    }
+    .sk-name { height: 14px; width: 70%; margin-bottom: 6px; }
+    .sk-meta { height: 11px; width: 50%; margin-bottom: 4px; }
+    .sk-for  { height: 11px; width: 40%; }
+    .sk-badge { width: 60px; height: 24px; border-radius: 6px; flex-shrink: 0; }
+
+    @keyframes shimmer {
+      0%   { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* ── Bottom CTA ──────────────────────────────────── */
+    .bottom-cta {
+      padding: 12px 16px 8px;
+      background: var(--gray-50);
+      flex-shrink: 0;
+    }
+    .btn-primary {
+      background: var(--blue-500);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      height: 48px;
+      width: 100%;
+      font-family: var(--font-ui);
+      font-size: 15px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    /* ── Bottom nav ──────────────────────────────────── */
+    .bottom-nav {
+      height: 56px;
+      background: white;
+      border-top: 1px solid var(--gray-100);
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .nav-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      font-size: 10px;
+      font-weight: 500;
+    }
+    .nav-item.active { color: var(--blue-500); }
+    .nav-item.inactive { color: var(--gray-400); }
+
+    /* ── FAB ─────────────────────────────────────────── */
+    .fab {
+      position: absolute;
+      bottom: 128px;
+      right: 16px;
+      width: 56px;
+      height: 56px;
+      background: var(--tan-500);
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(255,107,43,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 28px;
+      font-weight: 300;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    /* ── Sheet ───────────────────────────────────────── */
+    .sheet-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 10;
+    }
+    .bottom-sheet {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      border-radius: 20px 20px 0 0;
+      z-index: 11;
+      padding: 0 16px 32px;
+    }
+    .sheet-handle-row {
+      display: flex;
+      justify-content: center;
+      padding: 12px 0 8px;
+    }
+    .sheet-handle {
+      width: 32px;
+      height: 4px;
+      background: var(--gray-300);
+      border-radius: 2px;
+    }
+    .sheet-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 20px;
+    }
+    .field-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      margin-bottom: 6px;
+    }
+    .field-label span {
+      color: var(--error);
+      margin-left: 2px;
+    }
+    .input-field {
+      width: 100%;
+      height: 48px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: 10px;
+      padding: 0 14px;
+      font-family: var(--font-ui);
+      font-size: 15px;
+      color: var(--gray-400);
+      background: white;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+    }
+    .input-field.focused {
+      border-color: var(--blue-500);
+      color: var(--gray-900);
+    }
+    .textarea-field {
+      width: 100%;
+      height: 72px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-family: var(--font-ui);
+      font-size: 15px;
+      color: var(--gray-400);
+      background: white;
+      margin-bottom: 14px;
+      display: flex;
+    }
+    .budget-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .budget-input {
+      flex: 1;
+      height: 48px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: 10px;
+      padding: 0 14px;
+      font-family: var(--font-ui);
+      font-size: 15px;
+      color: var(--gray-900);
+      background: white;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .budget-currency {
+      height: 48px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: 10px;
+      padding: 0 12px;
+      font-family: var(--font-ui);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gray-700);
+      background: white;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-add {
+      background: var(--blue-500);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      height: 48px;
+      width: 100%;
+      font-family: var(--font-ui);
+      font-size: 15px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Screen 1: List with items -->
+<div>
+  <p class="mockup-label">01 · List Creation — Default</p>
+  <div class="phone">
+    <!-- Status bar -->
+    <div class="status-bar">
+      <span class="status-time">9:41</span>
+      <div class="status-icons">
+        <svg width="17" height="12" viewBox="0 0 17 12" fill="currentColor">
+          <rect x="0" y="4" width="3" height="8" rx="1" opacity="0.3"/>
+          <rect x="4.5" y="2.5" width="3" height="9.5" rx="1" opacity="0.5"/>
+          <rect x="9" y="0.5" width="3" height="11.5" rx="1" opacity="0.8"/>
+          <rect x="13.5" y="0" width="3" height="12" rx="1"/>
+        </svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <path d="M1 4C3.5 1.5 7 0 8 0s4.5 1.5 7 4"/>
+          <path d="M3 6.5C4.5 5 6.2 4 8 4s3.5 1 5 2.5"/>
+          <path d="M5.5 9C6.3 8.2 7 7.8 8 7.8s1.7.4 2.5 1.2"/>
+          <circle cx="8" cy="11" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+        <svg width="25" height="12" viewBox="0 0 25 12" fill="currentColor">
+          <rect x="0" y="1" width="21" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <rect x="2" y="3" width="16" height="6" rx="1"/>
+          <path d="M22.5 4v4a2 2 0 000-4z"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <div class="app-header">
+      <div class="header-back">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 4l-6 6 6 6"/>
+        </svg>
+      </div>
+      <div class="header-title">My Shopping List</div>
+    </div>
+
+    <!-- Progress -->
+    <div class="progress-section">
+      <div class="progress-track">
+        <div class="progress-fill"></div>
+      </div>
+      <div class="progress-label">3 of 8 items found</div>
+    </div>
+
+    <!-- Item list -->
+    <div class="scroll-area">
+      <div class="section-label">Your List</div>
+
+      <!-- Item 1: Found -->
+      <div class="item-card">
+        <div class="item-dot" style="background: var(--pin-electronics);"></div>
+        <div class="item-body">
+          <div class="item-name">Sony WH-1000XM5</div>
+          <div class="item-meta">Electronics · ¥35,000</div>
+          <div class="item-for">For: Me</div>
+        </div>
+        <div class="item-badge badge-found">Found ✓</div>
+      </div>
+
+      <!-- Item 2: Found -->
+      <div class="item-card">
+        <div class="item-dot" style="background: var(--pin-food);"></div>
+        <div class="item-body">
+          <div class="item-name">Matcha Kit Kat (variety)</div>
+          <div class="item-meta">Food · ¥1,200</div>
+          <div class="item-for">For: Mom</div>
+        </div>
+        <div class="item-badge badge-found">Found ✓</div>
+      </div>
+
+      <!-- Item 3: Searching -->
+      <div class="item-card">
+        <div class="item-dot" style="background: var(--pin-clothing);"></div>
+        <div class="item-body">
+          <div class="item-name">Uniqlo Heattech socks</div>
+          <div class="item-meta">Clothing · ¥1,500</div>
+          <div class="item-for">For: Everyone</div>
+        </div>
+        <div class="item-badge badge-searching">Searching</div>
+      </div>
+
+      <!-- Item 4: Searching -->
+      <div class="item-card">
+        <div class="item-dot" style="background: var(--pin-food);"></div>
+        <div class="item-body">
+          <div class="item-name">Tokyo Banana</div>
+          <div class="item-meta">Food · ¥800</div>
+          <div class="item-for">For: Kids</div>
+        </div>
+        <div class="item-badge badge-searching">Searching</div>
+      </div>
+
+      <!-- Item 5: Found -->
+      <div class="item-card">
+        <div class="item-dot" style="background: var(--pin-souvenirs);"></div>
+        <div class="item-body">
+          <div class="item-name">Totoro plush (large)</div>
+          <div class="item-meta">Souvenirs · ¥3,200</div>
+          <div class="item-for">For: Sister</div>
+        </div>
+        <div class="item-badge badge-found">Found ✓</div>
+      </div>
+
+      <!-- Skeleton item -->
+      <div class="item-card">
+        <div class="item-dot skeleton" style="background: none; width: 14px; height: 14px; margin-top: 3px;"></div>
+        <div class="item-body">
+          <div class="skeleton sk-name"></div>
+          <div class="skeleton sk-meta"></div>
+          <div class="skeleton sk-for"></div>
+        </div>
+        <div class="skeleton sk-badge"></div>
+      </div>
+
+      <div style="height: 100px;"></div>
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="bottom-cta">
+      <button class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 1.5v15M1.5 9h15"/>
+          <rect x="2" y="2" width="14" height="14" rx="3" stroke="none" fill="none"/>
+          <circle cx="9" cy="9" r="7.5"/>
+        </svg>
+        View on Map
+      </button>
+    </div>
+
+    <!-- Bottom nav -->
+    <div class="bottom-nav">
+      <div class="nav-item active">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+          <rect x="3" y="3" width="7" height="10" rx="1.5" fill="currentColor" opacity="0.25"/>
+          <rect x="3" y="3" width="7" height="10" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M12 6h6M12 10h6M12 14h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        List
+      </div>
+      <div class="nav-item inactive">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="11" cy="10" r="7"/>
+          <path d="M11 10 v3M9 19h4" stroke-linecap="round"/>
+        </svg>
+        Map
+      </div>
+      <div class="nav-item inactive">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <circle cx="11" cy="8" r="3"/>
+          <path d="M4 19c0-3.9 3.1-7 7-7h0c3.9 0 7 3.1 7 7"/>
+        </svg>
+        Settings
+      </div>
+    </div>
+
+    <!-- FAB -->
+    <div class="fab">＋</div>
+  </div>
+</div>
+
+<!-- Screen 2: Add Item sheet open -->
+<div>
+  <p class="mockup-label">01 · List Creation — Add Item Sheet</p>
+  <div class="phone">
+    <!-- Status bar -->
+    <div class="status-bar">
+      <span class="status-time">9:41</span>
+      <div class="status-icons">
+        <svg width="17" height="12" viewBox="0 0 17 12" fill="currentColor">
+          <rect x="0" y="4" width="3" height="8" rx="1" opacity="0.3"/>
+          <rect x="4.5" y="2.5" width="3" height="9.5" rx="1" opacity="0.5"/>
+          <rect x="9" y="0.5" width="3" height="11.5" rx="1" opacity="0.8"/>
+          <rect x="13.5" y="0" width="3" height="12" rx="1"/>
+        </svg>
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <path d="M1 4C3.5 1.5 7 0 8 0s4.5 1.5 7 4"/>
+          <path d="M3 6.5C4.5 5 6.2 4 8 4s3.5 1 5 2.5"/>
+          <path d="M5.5 9C6.3 8.2 7 7.8 8 7.8s1.7.4 2.5 1.2"/>
+          <circle cx="8" cy="11" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+        <svg width="25" height="12" viewBox="0 0 25 12" fill="currentColor">
+          <rect x="0" y="1" width="21" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <rect x="2" y="3" width="16" height="6" rx="1"/>
+          <path d="M22.5 4v4a2 2 0 000-4z"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Header (dimmed behind overlay) -->
+    <div class="app-header" style="opacity: 0.4;">
+      <div class="header-back">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 4l-6 6 6 6"/>
+        </svg>
+      </div>
+      <div class="header-title">My Shopping List</div>
+    </div>
+
+    <!-- Progress (dimmed) -->
+    <div class="progress-section" style="opacity: 0.4;">
+      <div class="progress-track">
+        <div class="progress-fill"></div>
+      </div>
+      <div class="progress-label">3 of 8 items found</div>
+    </div>
+
+    <!-- List content (dimmed) -->
+    <div class="scroll-area" style="opacity: 0.4; pointer-events: none;">
+      <div class="section-label">Your List</div>
+      <div class="item-card">
+        <div class="item-dot" style="background: var(--pin-electronics);"></div>
+        <div class="item-body">
+          <div class="item-name">Sony WH-1000XM5</div>
+          <div class="item-meta">Electronics · ¥35,000</div>
+        </div>
+        <div class="item-badge badge-found">Found ✓</div>
+      </div>
+      <div class="item-card">
+        <div class="item-dot" style="background: var(--pin-food);"></div>
+        <div class="item-body">
+          <div class="item-name">Matcha Kit Kat</div>
+          <div class="item-meta">Food · ¥1,200</div>
+        </div>
+        <div class="item-badge badge-found">Found ✓</div>
+      </div>
+    </div>
+
+    <!-- Bottom nav (dimmed) -->
+    <div class="bottom-nav" style="opacity: 0.4;">
+      <div class="nav-item active">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+          <rect x="3" y="3" width="7" height="10" rx="1.5" fill="currentColor" opacity="0.25"/>
+          <rect x="3" y="3" width="7" height="10" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        List
+      </div>
+      <div class="nav-item inactive">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="10" r="7"/></svg>
+        Map
+      </div>
+      <div class="nav-item inactive">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="8" r="3"/></svg>
+        Settings
+      </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="sheet-overlay"></div>
+
+    <!-- Bottom sheet -->
+    <div class="bottom-sheet">
+      <div class="sheet-handle-row">
+        <div class="sheet-handle"></div>
+      </div>
+      <div class="sheet-title">Add Item</div>
+
+      <div class="field-label">Item name <span>*</span></div>
+      <div class="input-field focused">Sony WH-1000XM5</div>
+
+      <div class="field-label">Description <span style="color: var(--gray-400); font-weight:400; text-transform: none; letter-spacing: 0; font-size: 11px;">(optional)</span></div>
+      <div class="textarea-field" style="color: var(--gray-400);">Any notes on colour or model…</div>
+
+      <div style="display: flex; gap: 12px;">
+        <div style="flex: 1;">
+          <div class="field-label">Budget <span style="color: var(--gray-400); font-weight:400; text-transform: none; letter-spacing: 0; font-size: 11px;">(optional)</span></div>
+          <div class="budget-input">
+            <span style="color: var(--gray-500);">¥</span>
+            <span style="color: var(--gray-900);">35,000</span>
+          </div>
+        </div>
+        <div>
+          <div class="field-label">Currency</div>
+          <div class="budget-currency">
+            JPY
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 4l4 4 4-4"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="field-label" style="margin-top: 14px;">For whom? <span style="color: var(--gray-400); font-weight:400; text-transform: none; letter-spacing: 0; font-size: 11px;">(optional)</span></div>
+      <div class="input-field" style="color: var(--gray-400);">e.g. Me, Mom, Everyone</div>
+
+      <button class="btn-add">
+        + Add to List
+      </button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
