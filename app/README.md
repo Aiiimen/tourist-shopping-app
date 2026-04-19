@@ -90,10 +90,10 @@ During setup, set the **Root Directory** to `app/` and add environment variables
 
 ### Option B — GitHub Integration (Recommended)
 
-1. Push this repo to GitHub.
-2. Go to [vercel.com/new](https://vercel.com/new) → import the repo.
+1. Repo is at: https://github.com/Aiiimen/tourist-shopping-app
+2. Go to [vercel.com/new](https://vercel.com/new) → import `Aiiimen/tourist-shopping-app`.
 3. Set **Root Directory** → `app`.
-4. Add all `VITE_*` env vars (and `CLAUDE_API_KEY` for server functions).
+4. Add all env vars from `.env.example` (see below).
 5. Click **Deploy**.
 
 Vercel auto-deploys on every push to `main`.
